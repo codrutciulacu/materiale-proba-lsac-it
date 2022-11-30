@@ -56,6 +56,28 @@
     // in cazul asta vectorul intors de map va fi: [2, 4, 6, 8]
     let arrTimes2 = arr.map(x => x * 2);
   ```
+  - object destructuring
+  ```Javascript
+    //daca avem un obiect de tipul:
+    const obiect = {
+      name: "Codrut", 
+      age: 20,
+      cool: true
+    }
+
+    //pentru a accesa field-urile obiectului avem 2 variante
+    //1. le referentiam direct
+    console.log(obiect.name) // Codrut
+    console.log(obiect.age) // 20
+    console.log(obiect.cool) // true 
+    
+    //2. folosim urmatoarea sintaxa
+    const {name, age, cool} = obiect;
+
+    console.log(name) // Codrut
+    console.log(age) // 20
+    console.log(cool) // true 
+  ```
 
 ## React
 - React este un framework de Javascript pe care il folosim pentru a putea scrie partea de logica a aplicatiei mai usor
@@ -162,4 +184,31 @@ function ButonBazat() {
 - Pentru codul de html intors de componenta vom folosi mereu **map**
 
 ### Props
-- 
+- Daca am vrea sa transmitem date de la o componenta parinte la o componenta copil prin intermediul argumentelor HTML putem folosi prop-urile
+- Exemplu:
+  #### **`ButonBazat.js`**
+``` Javascript
+function ButonBazat(props) {
+  const { text, show } = props;
+	return (
+		<div>
+			{
+				show ?
+				(<button className="my-btn">{text}</button>) :
+				(<></>)
+			}
+		</div>
+	)     
+}
+```
+
+  #### **`ComponentaParinte.js`**
+``` Javascript
+import {ButtonBazat} from './ButonBazat.js'
+
+function ComponentaParinte() {
+  return (
+    <ButonBazat text="Hello" show={true}/>
+  )
+}
+```
