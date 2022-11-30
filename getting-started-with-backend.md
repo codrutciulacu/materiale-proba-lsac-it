@@ -133,4 +133,27 @@ app.get("/users", (request, response) => {
 
 ## JsonWebToken
 - In general ca sa trimitem/primim  informatii de la client la server folosim formatul [JSON(JavaScript Object Notation)](https://www.json.org/json-en.html)
-- 
+- Exemplu JSON:
+```JSON
+{
+  "name": "Codrut",
+  "status": "Idiot, dar asumat",
+  "age": 20
+}
+```
+- Daca in schimb vrem sa trimitem date sensibile pe care nu am vrea sa le vada oricine sau date pe care nu am vrea sa le modificam putem folosi un [JSON Web Token](https://jwt.io/)
+- In general o sa generam un JWT atunci cand un user se autentifica
+- De fiecare data cand se va face un request catre server se va trimite alaturi si un JWT in header
+- Pe partea de backend noi vom verifica autenticitatea token-ului si vom verifica ca user-ul are drepturi de access la resursa ceruta
+- Libraria folosita([jsonwebtoken](https://www.npmjs.com/package/jsonwebtoken)) ne pune la dispozitie 2 functii importante:
+  - `sign` - pentru a genera un token pe baza unui JSON
+  - `verify` pentru a verifica ca token-ul este valid
+- Acest token este semnat(adica este folosit un string pe care doar server-ul il are in crearea token-ului), iar semnatura este verificata in verify
+- Exemplu: 
+```Javascript
+  // sign returneaza un string(token-ul nostru) si primeste ca parametru un json si un string(semnatura)
+  const token = jwt.sign(some_json, signature);
+  
+  //verify returneaza obiectul decodat si primeste ca parametru un token si semnatura
+  const data = jwt.verify(token, process.env.JWT_SECRET);
+```
