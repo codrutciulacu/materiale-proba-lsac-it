@@ -1,6 +1,8 @@
 # Getting started with backend
 
 ## Tehnologii recomandate
+- [Postman](https://www.postman.com/downloads/)
+- [MongoDB Compass](https://www.mongodb.com/try/download/compass)
 - [Express](https://expressjs.com/en/starter/installing.html)
 - [Mongoose](https://mongoosejs.com/docs/guide.html)
 - [JsonWebToken](https://www.npmjs.com/package/jsonwebtoken)
